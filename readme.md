@@ -29,10 +29,13 @@ return repo:install($zar)
 The `test.xq` script uses the BaseX [Unit module](http://docs.basex.org/wiki/Unit_Module)
 
 # License
+
 Copyright (c) 2015, Andy Bunce. (Apache 2 License). 
 mp3agic Michael Patricios (MIT License). 
 
 # Existdb
-Experimental support for ExistDB is included in the xar (repo.xml,exist.xml)
-Requires java binding for XQuery to be enabled in config.xml.
-http://exist-db.org/exist/apps/doc/configuration.xml?q=conf.xml&field=all&id=D2.2.4#D2.2.4
+
+Experimental support for [ExistDB](http://exist-db.org/exist/apps/homepage/index.html) is included in the xar (repo.xml,exist.xml)
+Requires java binding for XQuery to be enabled in [config.xml]
+(http://exist-db.org/exist/apps/doc/configuration.xml?q=conf.xml&field=all&id=D2.2.4#D2.2.4).
+Not tested.
