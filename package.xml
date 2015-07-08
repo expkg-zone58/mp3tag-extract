@@ -1,0 +1,41 @@
+<!--  @see http://cxan.org/faq#add-pkg  -->
+<repo abbrev="mp3tag-extractor">
+  <pkg abbrev="mp3tag-extractor" id="expkg-zone58.github.io/mp3tag-extractor">
+    <name>http://expkg-zone58.github.io/mp3tag-extractor</name>
+    <abstract>An XQuery library to extract mp3 tag metadata as XML using the 
+[Mp3agic library](https://github.com/mpatric/mp3agic)  
+The output format follows the structure of [Xmlcalabash](http://xmlcalabash.com/) metadata extension.</abstract>
+    <author id="mpatric">Michael Patricios</author>
+    <maintainer id="abunce">Andy Bunce</maintainer>
+    <category id="libs">Libraries</category>
+    <home>https://github.com/mpatric/mp3agic</home>
+    <tag>mp3</tag>
+    <tag>metadata</tag>
+    <tag>audio</tag>
+    <version num="0.0.5">
+      <dependency processor="basex"/>
+      <file name="ex-dotml-0.0.5.xar" role="pkg"/>
+    </version>
+    <version num="1.0.5">
+      <!-- generated: {fn:current-dateTime()} -->
+    </version>
+    <version num="1.0.6">
+      <!-- generated: {fn:current-dateTime()} -->
+    </version>
+    <version num="0.0.1">
+      <!-- generated: {fn:current-dateTime()} -->
+    </version>
+    <version num="0.1.1">
+      <!-- generated: {fn:current-dateTime()} -->
+    </version>
+    <version num="0.1.2">
+      <!-- generated: {fn:current-dateTime()} -->
+    </version>
+    <version num="0.1.3">
+      <!-- generated: {fn:current-dateTime()} -->
+    </version>
+    <version num="0.1.4">
+      <!-- generated: {fn:current-dateTime()} -->
+    </version>
+  </pkg>
+</repo>

@@ -1,0 +1,4 @@
+<package xmlns="http://www.basex.org/modules/pkg">
+   <jar>mp3agic-0.8.3.jar</jar>
+   <class>com.mpatric.mp3agic.Mp3File</class>
+</package>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<meta xmlns="http://exist-db.org/xquery/repo">
+    <description>Extract mp3 metadata using https://github.com/mpatric/mp3agic</description>
+    <author>Andy Bunce</author>
+    <author>Michael Patricios</author>
+    <website>https://github.com/expkg-zone58</website>
+    <status>alpha</status>
+    <license>Apache 2</license>
+    <copyright>true</copyright>
+    <type>library</type>
+    <target>doc</target>
+    <prepare/>
+    <finish/>
+    <permissions user="admin" password="" group="dba" mode="rw-rw-r--"/>
+    <note>Does this work?.</note>
+    <deployed/>
+</meta>
