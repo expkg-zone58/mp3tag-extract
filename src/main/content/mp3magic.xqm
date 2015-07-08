@@ -57,18 +57,19 @@ declare variable $mp3agic:dirs:=map{
 };
 
 (:~
- : details from file name
+ : tag details from file name trapping all errors
  :)
-declare function detail($f as xs:string) as element(file)
+declare function read($f as xs:string) as element(metadata)
 {
-   <file name="{$f}">{
+   <metadata src="{$f}">{
     try{
     tags($f)
       } catch *{
       <error code="{$err:code}">{$err:description}</error> 
     }
-    }</file>
+    }</metadata>
 };
+
 declare function tags($file as xs:string) as element(tag)*
 {
     let $mp3:=Mp3File:new($file)
