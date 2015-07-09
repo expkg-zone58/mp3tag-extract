@@ -1,6 +1,6 @@
 <xqdoc:xqdoc xmlns:xqdoc="http://www.xqdoc.org/1.0">
   <xqdoc:control>
-    <xqdoc:date>2015-07-08T15:49:13.698+01:00</xqdoc:date>
+    <xqdoc:date>2015-07-09T20:28:18.911+01:00</xqdoc:date>
     <xqdoc:version>1.1</xqdoc:version>
   </xqdoc:control>
   <xqdoc:module type="library">
@@ -43,10 +43,10 @@
   <xqdoc:functions>
     <xqdoc:function arity="1">
       <xqdoc:comment>
-        <xqdoc:description>details from file name</xqdoc:description>
+        <xqdoc:description>tag details from file name trapping all errors</xqdoc:description>
       </xqdoc:comment>
-      <xqdoc:name>detail</xqdoc:name>
-      <xqdoc:signature>declare function detail($f as xs:string) as element(file)</xqdoc:signature>
+      <xqdoc:name>read</xqdoc:name>
+      <xqdoc:signature>declare function read($f as xs:string) as element(metadata)</xqdoc:signature>
       <xqdoc:parameters>
         <xqdoc:parameter>
           <xqdoc:name>f</xqdoc:name>
@@ -54,7 +54,7 @@
         </xqdoc:parameter>
       </xqdoc:parameters>
       <xqdoc:return>
-        <xqdoc:type>element(file)</xqdoc:type>
+        <xqdoc:type>element(metadata)</xqdoc:type>
       </xqdoc:return>
     </xqdoc:function>
     <xqdoc:function arity="1">

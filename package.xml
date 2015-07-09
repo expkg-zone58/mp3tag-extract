@@ -16,26 +16,8 @@ The output format follows the structure of [Xmlcalabash](http://xmlcalabash.com/
       <dependency processor="basex"/>
       <file name="ex-dotml-0.0.5.xar" role="pkg"/>
     </version>
-    <version num="1.0.5">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="1.0.6">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.0.1">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.1.1">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.1.2">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.1.3">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.1.4">
-      <!-- generated: {fn:current-dateTime()} -->
+    <version num="0.2.0" generated="2015-07-09T20:28:04.629+01:00">
+      <file name="mp3tag-extractor-0.2.0.xar" role="pkg"/>
     </version>
   </pkg>
 </repo>
