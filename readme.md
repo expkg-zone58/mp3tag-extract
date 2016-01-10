@@ -2,10 +2,33 @@
 An XQuery library to extract mp3 metadata as XML using the 
 [mpatric/mp3agic library](https://github.com/mpatric/mp3agic)  
 The output xml format matches the o/p of the [Xmlcalabash](http://xmlcalabash.com/) metadata extension. 
+
+Use:
+''''
+ mp3agic:read($f)
+''''
+Result
 ````
-<metadata>
- <tag name=".." dir=".." type="..">value</tag>
- <tag ..
+<metadata src="C:\Users\andy\git\mp3tag-extract\src\test\v24tagswithalbumimage.mp3">
+  <tag dir="file" name="ChannelMode">Joint stereo</tag>
+  <tag dir="file" name="SampleRate">44100</tag>
+  <tag dir="file" name="Bitrate">125</tag>
+  <tag dir="file" name="Layer">III</tag>
+  <tag dir="file" name="Version">1.0</tag>
+  <tag dir="file" name="isVbr">true</tag>
+  <tag dir="Id3" name="Composer">COMPOSER23456789012345678901234</tag>
+  <tag dir="Id3" name="Artist">ARTIST123456789012345678901234</tag>
+  <tag dir="Id3" name="Copyright">COPYRIGHT2345678901234567890123</tag>
+  <tag dir="Id3" name="Track">1</tag>
+  <tag dir="Id3" name="Url">URL2345678901234567890123456789</tag>
+  <tag dir="Id3" name="Album">ALBUM1234567890123456789012345</tag>
+  <tag dir="Id3" name="OriginalArtist">ORIGARTIST234567890123456789012</tag>
+  <tag dir="Id3" name="Title">TITLE1234567890123456789012345</tag>
+  <tag dir="Id3" name="GenreDescription">Pop</tag>
+  <tag dir="Id3" name="AlbumImageMimeType">image/png</tag>
+  <tag dir="Id3" name="Encoder">ENCODER234567890123456789012345</tag>
+  <tag dir="Id3" name="Year">2014</tag>
+  <tag dir="Id3" name="Comment">COMMENT123456789012345678901</tag>
 </metadata>
 ````
 BaseX 8.2 or greater is required.

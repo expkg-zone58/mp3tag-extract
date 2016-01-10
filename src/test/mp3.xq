@@ -9,4 +9,5 @@ declare variable $f:="v24tagswithalbumimage.mp3";
 let $f:=file:resolve-path($f,file:base-dir() )
 let $mp3:=Mp3File:new($f)
 let $x:=<mp3><length>{Mp3File:getSampleRate($mp3)}</length></mp3>
-return  mp3agic:detail($f) 
+let $f:=  mp3agic:AlbumImage($mp3)
+return $f
