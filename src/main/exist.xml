@@ -1,5 +1,5 @@
 <package xmlns="http://exist-db.org/ns/expath-pkg">
-   <jar>mp3agic-0.8.3.jar</jar>
+   <jar>mp3agic-0.8.4.jar</jar>
    <java>
    <namespace>java:com.mpatric.mp3agic.Mp3File</namespace>
    <class>com.mpatric.mp3agic.Mp3File</class>

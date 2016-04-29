@@ -1,6 +1,6 @@
 <xqdoc:xqdoc xmlns:xqdoc="http://www.xqdoc.org/1.0">
   <xqdoc:control>
-    <xqdoc:date>2015-07-09T20:28:18.911+01:00</xqdoc:date>
+    <xqdoc:date>2016-04-29T17:34:39.673+01:00</xqdoc:date>
     <xqdoc:version>1.1</xqdoc:version>
   </xqdoc:control>
   <xqdoc:module type="library">
@@ -19,6 +19,9 @@
     <xqdoc:namespace prefix="Mp3File" uri="java:com.mpatric.mp3agic.Mp3File"/>
     <xqdoc:namespace prefix="ID3v1Tag" uri="java:com.mpatric.mp3agic.ID3v1Tag"/>
     <xqdoc:namespace prefix="ID3v2Tag" uri="java:com.mpatric.mp3agic.ID3v2"/>
+    <xqdoc:namespace prefix="ID3v2Frame" uri="java:com.mpatric.mp3agic.ID3v2Frame"/>
+    <xqdoc:namespace prefix="ID3Wrapper" uri="java:com.mpatric.mp3agic.ID3Wrapper"/>
+    <xqdoc:namespace prefix="JMap" uri="java.util.Map"/>
     <xqdoc:namespace prefix="ann" uri="http://www.w3.org/2012/xquery"/>
   </xqdoc:namespaces>
   <xqdoc:imports/>
@@ -28,15 +31,7 @@
       <xqdoc:type>map(*)</xqdoc:type>
     </xqdoc:variable>
     <xqdoc:variable>
-      <xqdoc:name>mp3agic:v1tags</xqdoc:name>
-      <xqdoc:type>map(*)</xqdoc:type>
-    </xqdoc:variable>
-    <xqdoc:variable>
-      <xqdoc:name>mp3agic:v2tags</xqdoc:name>
-      <xqdoc:type>map(*)</xqdoc:type>
-    </xqdoc:variable>
-    <xqdoc:variable>
-      <xqdoc:name>mp3agic:dirs</xqdoc:name>
+      <xqdoc:name>mp3agic:id3tags</xqdoc:name>
       <xqdoc:type>map(*)</xqdoc:type>
     </xqdoc:variable>
   </xqdoc:variables>
@@ -58,6 +53,9 @@
       </xqdoc:return>
     </xqdoc:function>
     <xqdoc:function arity="1">
+      <xqdoc:comment>
+        <xqdoc:description>@return all tags in file</xqdoc:description>
+      </xqdoc:comment>
       <xqdoc:name>tags</xqdoc:name>
       <xqdoc:signature>declare function tags($file as xs:string) as element(tag)*</xqdoc:signature>
       <xqdoc:parameters>
@@ -71,8 +69,12 @@
       </xqdoc:return>
     </xqdoc:function>
     <xqdoc:function arity="1">
-      <xqdoc:name>id3v1Tag</xqdoc:name>
-      <xqdoc:signature>declare function id3v1Tag($mp3 as item()*) as element(tag)*</xqdoc:signature>
+      <xqdoc:comment>
+        <xqdoc:description/>
+        <xqdoc:return>Image if present</xqdoc:return>
+      </xqdoc:comment>
+      <xqdoc:name>AlbumImage</xqdoc:name>
+      <xqdoc:signature>declare function AlbumImage($mp3 as item()*) as xs:hexBinary?</xqdoc:signature>
       <xqdoc:parameters>
         <xqdoc:parameter>
           <xqdoc:name>mp3</xqdoc:name>
@@ -80,12 +82,15 @@
         </xqdoc:parameter>
       </xqdoc:parameters>
       <xqdoc:return>
-        <xqdoc:type occurrence="*">element(tag)</xqdoc:type>
+        <xqdoc:type occurrence="?">xs:hexBinary</xqdoc:type>
       </xqdoc:return>
     </xqdoc:function>
     <xqdoc:function arity="1">
-      <xqdoc:name>id3v2Tag</xqdoc:name>
-      <xqdoc:signature>declare function id3v2Tag($mp3 as item()*) as element(tag)*</xqdoc:signature>
+      <xqdoc:comment>
+        <xqdoc:description>custom tags</xqdoc:description>
+      </xqdoc:comment>
+      <xqdoc:name>Custom</xqdoc:name>
+      <xqdoc:signature>declare function Custom($mp3 as item()*) as item()*</xqdoc:signature>
       <xqdoc:parameters>
         <xqdoc:parameter>
           <xqdoc:name>mp3</xqdoc:name>
@@ -93,7 +98,20 @@
         </xqdoc:parameter>
       </xqdoc:parameters>
       <xqdoc:return>
-        <xqdoc:type occurrence="*">element(tag)</xqdoc:type>
+        <xqdoc:type occurrence="*">item()</xqdoc:type>
+      </xqdoc:return>
+    </xqdoc:function>
+    <xqdoc:function arity="1">
+      <xqdoc:name>getFrameSets</xqdoc:name>
+      <xqdoc:signature>declare function getFrameSets($mp3 as item()*) as item()*</xqdoc:signature>
+      <xqdoc:parameters>
+        <xqdoc:parameter>
+          <xqdoc:name>mp3</xqdoc:name>
+          <xqdoc:type occurrence="*">item()</xqdoc:type>
+        </xqdoc:parameter>
+      </xqdoc:parameters>
+      <xqdoc:return>
+        <xqdoc:type occurrence="*">item()</xqdoc:type>
       </xqdoc:return>
     </xqdoc:function>
     <xqdoc:function arity="4">

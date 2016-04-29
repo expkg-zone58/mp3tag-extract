@@ -19,5 +19,11 @@ The output format follows the structure of [Xmlcalabash](http://xmlcalabash.com/
     <version num="0.2.0" generated="2015-07-09T20:28:04.629+01:00">
       <file name="mp3tag-extractor-0.2.0.xar" role="pkg"/>
     </version>
+    <version num="0.4.0">
+      <!-- generated: {fn:current-dateTime()} -->
+    </version>
+    <version num="0.4.1">
+      <!-- generated: {fn:current-dateTime()} -->
+    </version>
   </pkg>
 </repo>
