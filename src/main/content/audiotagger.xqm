@@ -45,7 +45,8 @@ declare function tags:getFields($name ,$tag,
   then let $tf:=Tag:getFields($tag,$name)
        for $i in 0 to list:size($tf)-1
        let $i0:=list:get($tf,xs:int($i))
-       return $f(string($name),TagTextField:getContent($i0))
+       let $v:=(# db:checkstrings false #){tags:clean-string(TagTextField:getContent($i0))}
+       return $f(string($name),$v)
   else ()
 };
 
@@ -56,4 +57,14 @@ declare function tags:style-e($name as xs:string,$value as xs:string) as element
 declare function tags:style-a($name as xs:string,$value as xs:string,$dir as xs:string) as element()
 {
   <tag dir="{$dir}" name="{$name}">{$value}</tag>
+};
+
+(:~ remove bad chars from java string
+ : need more eg [^\x09\x0A\x0D\x20-\uD7FF\uE000-\uFFFD\u10000-u10FFFF]
+ : @see http://stackoverflow.com/a/14323524
+ :)
+declare %private function tags:clean-string($s){
+    let $t:= fn:string-to-codepoints($s)
+    let $t:=fn:filter($t,function($c as xs:integer){$c > 8})
+    return fn:codepoints-to-string($t)
 };
