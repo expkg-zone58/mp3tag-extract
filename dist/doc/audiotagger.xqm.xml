@@ -1,0 +1,122 @@
+<xqdoc:xqdoc xmlns:xqdoc="http://www.xqdoc.org/1.0">
+  <xqdoc:control>
+    <xqdoc:date>2016-06-16T21:25:11.85+01:00</xqdoc:date>
+    <xqdoc:version>1.1</xqdoc:version>
+  </xqdoc:control>
+  <xqdoc:module type="library">
+    <xqdoc:uri>expkg-zone58.metadata.audio</xqdoc:uri>
+    <xqdoc:name>audiotagger.xqm</xqdoc:name>
+    <xqdoc:comment>
+      <xqdoc:description>Extract mp3 tags using jaudiotagger</xqdoc:description>
+      <xqdoc:see>https://bitbucket.org/ijabz/jaudiotagger</xqdoc:see>
+      <xqdoc:author>andy bunce</xqdoc:author>
+      <xqdoc:since>june 2016</xqdoc:since>
+      <xqdoc:custom tag="licence">apache 2</xqdoc:custom>
+    </xqdoc:comment>
+  </xqdoc:module>
+  <xqdoc:namespaces>
+    <xqdoc:namespace prefix="tags" uri="expkg-zone58.metadata.audio"/>
+    <xqdoc:namespace prefix="MP3File" uri="java:org.jaudiotagger.audio.mp3.MP3File"/>
+    <xqdoc:namespace prefix="FieldKey" uri="java:org.jaudiotagger.tag.FieldKey"/>
+    <xqdoc:namespace prefix="Tag" uri="java:org.jaudiotagger.tag.Tag"/>
+    <xqdoc:namespace prefix="TagTextField" uri="java:org.jaudiotagger.tag.TagTextField"/>
+    <xqdoc:namespace prefix="list" uri="java:java.util.List"/>
+  </xqdoc:namespaces>
+  <xqdoc:imports/>
+  <xqdoc:variables>
+    <xqdoc:variable>
+      <xqdoc:name>tags:names</xqdoc:name>
+      <xqdoc:type occurrence="*">item()</xqdoc:type>
+    </xqdoc:variable>
+  </xqdoc:variables>
+  <xqdoc:functions>
+    <xqdoc:function arity="1">
+      <xqdoc:comment>
+        <xqdoc:description>tag details from file name trapping all errors</xqdoc:description>
+      </xqdoc:comment>
+      <xqdoc:name>tags:read</xqdoc:name>
+      <xqdoc:signature>declare function tags:read($f as xs:string) as element(metadata)</xqdoc:signature>
+      <xqdoc:parameters>
+        <xqdoc:parameter>
+          <xqdoc:name>f</xqdoc:name>
+          <xqdoc:type>xs:string</xqdoc:type>
+        </xqdoc:parameter>
+      </xqdoc:parameters>
+      <xqdoc:return>
+        <xqdoc:type>element(metadata)</xqdoc:type>
+      </xqdoc:return>
+    </xqdoc:function>
+    <xqdoc:function arity="1">
+      <xqdoc:name>tags:extract</xqdoc:name>
+      <xqdoc:signature>declare function tags:extract($f as xs:string) as element()*</xqdoc:signature>
+      <xqdoc:parameters>
+        <xqdoc:parameter>
+          <xqdoc:name>f</xqdoc:name>
+          <xqdoc:type>xs:string</xqdoc:type>
+        </xqdoc:parameter>
+      </xqdoc:parameters>
+      <xqdoc:return>
+        <xqdoc:type occurrence="*">element()</xqdoc:type>
+      </xqdoc:return>
+    </xqdoc:function>
+    <xqdoc:function arity="3">
+      <xqdoc:name>tags:getFields</xqdoc:name>
+      <xqdoc:signature>declare function tags:getFields($name as item()*, $tag as item()*, $f as function(xs:string, xs:string) as element()) as element()*</xqdoc:signature>
+      <xqdoc:parameters>
+        <xqdoc:parameter>
+          <xqdoc:name>name</xqdoc:name>
+          <xqdoc:type occurrence="*">item()</xqdoc:type>
+        </xqdoc:parameter>
+        <xqdoc:parameter>
+          <xqdoc:name>tag</xqdoc:name>
+          <xqdoc:type occurrence="*">item()</xqdoc:type>
+        </xqdoc:parameter>
+        <xqdoc:parameter>
+          <xqdoc:name>f</xqdoc:name>
+          <xqdoc:type>function(xs:string, xs:string) as element()</xqdoc:type>
+        </xqdoc:parameter>
+      </xqdoc:parameters>
+      <xqdoc:return>
+        <xqdoc:type occurrence="*">element()</xqdoc:type>
+      </xqdoc:return>
+    </xqdoc:function>
+    <xqdoc:function arity="2">
+      <xqdoc:name>tags:style-e</xqdoc:name>
+      <xqdoc:signature>declare function tags:style-e($name as xs:string, $value as xs:string) as element()</xqdoc:signature>
+      <xqdoc:parameters>
+        <xqdoc:parameter>
+          <xqdoc:name>name</xqdoc:name>
+          <xqdoc:type>xs:string</xqdoc:type>
+        </xqdoc:parameter>
+        <xqdoc:parameter>
+          <xqdoc:name>value</xqdoc:name>
+          <xqdoc:type>xs:string</xqdoc:type>
+        </xqdoc:parameter>
+      </xqdoc:parameters>
+      <xqdoc:return>
+        <xqdoc:type>element()</xqdoc:type>
+      </xqdoc:return>
+    </xqdoc:function>
+    <xqdoc:function arity="3">
+      <xqdoc:name>tags:style-a</xqdoc:name>
+      <xqdoc:signature>declare function tags:style-a($name as xs:string, $value as xs:string, $dir as xs:string) as element()</xqdoc:signature>
+      <xqdoc:parameters>
+        <xqdoc:parameter>
+          <xqdoc:name>name</xqdoc:name>
+          <xqdoc:type>xs:string</xqdoc:type>
+        </xqdoc:parameter>
+        <xqdoc:parameter>
+          <xqdoc:name>value</xqdoc:name>
+          <xqdoc:type>xs:string</xqdoc:type>
+        </xqdoc:parameter>
+        <xqdoc:parameter>
+          <xqdoc:name>dir</xqdoc:name>
+          <xqdoc:type>xs:string</xqdoc:type>
+        </xqdoc:parameter>
+      </xqdoc:parameters>
+      <xqdoc:return>
+        <xqdoc:type>element()</xqdoc:type>
+      </xqdoc:return>
+    </xqdoc:function>
+  </xqdoc:functions>
+</xqdoc:xqdoc>

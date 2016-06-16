@@ -1,4 +1,4 @@
 <package xmlns="http://www.basex.org/modules/pkg">
-   <jar>mp3agic-0.8.4.jar</jar>
-   <class>com.mpatric.mp3agic.Mp3File</class>
+   <jar>jaudiotagger-2.2.6-SNAPSHOT.jar</jar>
+   <class>org.jaudiotagger.audio.mp3.MP3File</class>
 </package>

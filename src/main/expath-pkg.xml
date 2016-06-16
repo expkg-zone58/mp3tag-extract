@@ -1,14 +1,14 @@
 <package xmlns="http://expath.org/ns/pkg"
          name="http://expkg-zone58.github.io/mp3tag-extractor"
          abbrev="mp3tag-extractor"
-         version="0.4.1"
+         version="0.5.2"
          spec="1.0">
 
-   <title>Extract mp3 metadata using https://github.com/mpatric/mp3agic</title>
+   <title>Extract audio metadata using https://bitbucket.org/ijabz/jaudiotagger</title>
    <dependency processor="basex" />
    <xquery> 
-     <namespace>expkg-zone58.audio.mp3</namespace>
-     <file>mp3magic.xqm</file>
+     <namespace>expkg-zone58.metadata.audio</namespace>
+     <file>audiotagger.xqm</file>
    </xquery>
 
 </package>
