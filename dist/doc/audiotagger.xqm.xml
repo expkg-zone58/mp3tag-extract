@@ -1,21 +1,23 @@
 <xqdoc:xqdoc xmlns:xqdoc="http://www.xqdoc.org/1.0">
   <xqdoc:control>
-    <xqdoc:date>2016-06-16T22:29:18.079+01:00</xqdoc:date>
+    <xqdoc:date>2017-03-19T12:12:50.33Z</xqdoc:date>
     <xqdoc:version>1.1</xqdoc:version>
   </xqdoc:control>
   <xqdoc:module type="library">
-    <xqdoc:uri>expkg-zone58.metadata.audio</xqdoc:uri>
+    <xqdoc:uri>expkg-zone58:audio.metadata</xqdoc:uri>
     <xqdoc:name>audiotagger.xqm</xqdoc:name>
     <xqdoc:comment>
-      <xqdoc:description>Extract mp3 tags using jaudiotagger</xqdoc:description>
+      <xqdoc:description>Extract audio tags using the  <a href="https://bitbucket.org/ijabz/jaudiotagger">jaudiotagger</a> library.
+jaudiotagger supports Mp3, Mp4 (Mp4 audio, M4a and M4p audio) Ogg Vorbis, Flac and Wma, 
+there is  limited support for Wav and Real formats.</xqdoc:description>
       <xqdoc:see>https://bitbucket.org/ijabz/jaudiotagger</xqdoc:see>
       <xqdoc:author>andy bunce</xqdoc:author>
-      <xqdoc:since>june 2016</xqdoc:since>
+      <xqdoc:version>0.7.1</xqdoc:version>
       <xqdoc:custom tag="licence">apache 2</xqdoc:custom>
     </xqdoc:comment>
   </xqdoc:module>
   <xqdoc:namespaces>
-    <xqdoc:namespace prefix="tags" uri="expkg-zone58.metadata.audio"/>
+    <xqdoc:namespace prefix="audiometa" uri="expkg-zone58:audio.metadata"/>
     <xqdoc:namespace prefix="MP3File" uri="java:org.jaudiotagger.audio.mp3.MP3File"/>
     <xqdoc:namespace prefix="FieldKey" uri="java:org.jaudiotagger.tag.FieldKey"/>
     <xqdoc:namespace prefix="Tag" uri="java:org.jaudiotagger.tag.Tag"/>
@@ -26,20 +28,27 @@
   <xqdoc:imports/>
   <xqdoc:variables>
     <xqdoc:variable>
-      <xqdoc:name>tags:names</xqdoc:name>
+      <xqdoc:name>audiometa:names</xqdoc:name>
+      <xqdoc:annotations>
+        <xqdoc:annotation name="private"/>
+      </xqdoc:annotations>
       <xqdoc:type occurrence="*">item()</xqdoc:type>
     </xqdoc:variable>
   </xqdoc:variables>
   <xqdoc:functions>
     <xqdoc:function arity="1">
       <xqdoc:comment>
-        <xqdoc:description>tag details from file name trapping all errors</xqdoc:description>
+        <xqdoc:description>Get tag details from audio file  trapping all errors.</xqdoc:description>
+        <xqdoc:param>$file filepath of audio file</xqdoc:param>
+        <xqdoc:return>
+          <code>&lt;metadata src=".."&gt;&lt;tag&gt;..</code>
+        </xqdoc:return>
       </xqdoc:comment>
-      <xqdoc:name>tags:read</xqdoc:name>
-      <xqdoc:signature>declare function tags:read($f as xs:string) as element(metadata)</xqdoc:signature>
+      <xqdoc:name>audiometa:read</xqdoc:name>
+      <xqdoc:signature>declare function audiometa:read($file as xs:string) as element(metadata)</xqdoc:signature>
       <xqdoc:parameters>
         <xqdoc:parameter>
-          <xqdoc:name>f</xqdoc:name>
+          <xqdoc:name>file</xqdoc:name>
           <xqdoc:type>xs:string</xqdoc:type>
         </xqdoc:parameter>
       </xqdoc:parameters>
@@ -48,11 +57,18 @@
       </xqdoc:return>
     </xqdoc:function>
     <xqdoc:function arity="1">
-      <xqdoc:name>tags:extract</xqdoc:name>
-      <xqdoc:signature>declare function tags:extract($f as xs:string) as element()*</xqdoc:signature>
+      <xqdoc:comment>
+        <xqdoc:description>Get tag details from audio file as a sequence.</xqdoc:description>
+        <xqdoc:param>$file filepath of audio file</xqdoc:param>
+        <xqdoc:return>
+          <code>&lt;tag dir=".." name=".."&gt;value&lt;tag....</code>
+        </xqdoc:return>
+      </xqdoc:comment>
+      <xqdoc:name>audiometa:extract</xqdoc:name>
+      <xqdoc:signature>declare function audiometa:extract($file as xs:string) as element()*</xqdoc:signature>
       <xqdoc:parameters>
         <xqdoc:parameter>
-          <xqdoc:name>f</xqdoc:name>
+          <xqdoc:name>file</xqdoc:name>
           <xqdoc:type>xs:string</xqdoc:type>
         </xqdoc:parameter>
       </xqdoc:parameters>
@@ -61,8 +77,11 @@
       </xqdoc:return>
     </xqdoc:function>
     <xqdoc:function arity="3">
-      <xqdoc:name>tags:getFields</xqdoc:name>
-      <xqdoc:signature>declare function tags:getFields($name as item()*, $tag as item()*, $f as function(xs:string, xs:string) as element()) as element()*</xqdoc:signature>
+      <xqdoc:name>audiometa:getFields</xqdoc:name>
+      <xqdoc:annotations>
+        <xqdoc:annotation name="private"/>
+      </xqdoc:annotations>
+      <xqdoc:signature>declare %private function audiometa:getFields($name as item()*, $tag as item()*, $f as function(xs:string, xs:string) as element()) as element()*</xqdoc:signature>
       <xqdoc:parameters>
         <xqdoc:parameter>
           <xqdoc:name>name</xqdoc:name>
@@ -81,26 +100,12 @@
         <xqdoc:type occurrence="*">element()</xqdoc:type>
       </xqdoc:return>
     </xqdoc:function>
-    <xqdoc:function arity="2">
-      <xqdoc:name>tags:style-e</xqdoc:name>
-      <xqdoc:signature>declare function tags:style-e($name as xs:string, $value as xs:string) as element()</xqdoc:signature>
-      <xqdoc:parameters>
-        <xqdoc:parameter>
-          <xqdoc:name>name</xqdoc:name>
-          <xqdoc:type>xs:string</xqdoc:type>
-        </xqdoc:parameter>
-        <xqdoc:parameter>
-          <xqdoc:name>value</xqdoc:name>
-          <xqdoc:type>xs:string</xqdoc:type>
-        </xqdoc:parameter>
-      </xqdoc:parameters>
-      <xqdoc:return>
-        <xqdoc:type>element()</xqdoc:type>
-      </xqdoc:return>
-    </xqdoc:function>
     <xqdoc:function arity="3">
-      <xqdoc:name>tags:style-a</xqdoc:name>
-      <xqdoc:signature>declare function tags:style-a($name as xs:string, $value as xs:string, $dir as xs:string) as element()</xqdoc:signature>
+      <xqdoc:name>audiometa:style-a</xqdoc:name>
+      <xqdoc:annotations>
+        <xqdoc:annotation name="private"/>
+      </xqdoc:annotations>
+      <xqdoc:signature>declare %private function audiometa:style-a($name as xs:string, $value as xs:string, $dir as xs:string) as element(tag)</xqdoc:signature>
       <xqdoc:parameters>
         <xqdoc:parameter>
           <xqdoc:name>name</xqdoc:name>
@@ -116,7 +121,7 @@
         </xqdoc:parameter>
       </xqdoc:parameters>
       <xqdoc:return>
-        <xqdoc:type>element()</xqdoc:type>
+        <xqdoc:type>element(tag)</xqdoc:type>
       </xqdoc:return>
     </xqdoc:function>
     <xqdoc:function arity="1">
@@ -125,11 +130,11 @@
 need more eg [^\x09\x0A\x0D\x20-\uD7FF\uE000-\uFFFD\u10000-u10FFFF]</xqdoc:description>
         <xqdoc:see>http://stackoverflow.com/a/14323524</xqdoc:see>
       </xqdoc:comment>
-      <xqdoc:name>tags:clean-string</xqdoc:name>
+      <xqdoc:name>audiometa:clean-string</xqdoc:name>
       <xqdoc:annotations>
         <xqdoc:annotation name="private"/>
       </xqdoc:annotations>
-      <xqdoc:signature>declare %private function tags:clean-string($s as item()*) as item()*</xqdoc:signature>
+      <xqdoc:signature>declare %private function audiometa:clean-string($s as item()*) as xs:string</xqdoc:signature>
       <xqdoc:parameters>
         <xqdoc:parameter>
           <xqdoc:name>s</xqdoc:name>
@@ -137,7 +142,7 @@ need more eg [^\x09\x0A\x0D\x20-\uD7FF\uE000-\uFFFD\u10000-u10FFFF]</xqdoc:descr
         </xqdoc:parameter>
       </xqdoc:parameters>
       <xqdoc:return>
-        <xqdoc:type occurrence="*">item()</xqdoc:type>
+        <xqdoc:type>xs:string</xqdoc:type>
       </xqdoc:return>
     </xqdoc:function>
   </xqdoc:functions>
