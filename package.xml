@@ -2,49 +2,20 @@
 <repo abbrev="mp3tag-extractor">
   <pkg abbrev="mp3tag-extractor" id="expkg-zone58.github.io/mp3tag-extractor">
     <name>http://expkg-zone58.github.io/mp3tag-extractor</name>
-    <abstract>An XQuery library to extract mp3 tag metadata as XML using the 
-[Mp3agic library](https://github.com/mpatric/mp3agic)  
+    <abstract>Extract audio tags using the jaudiotagger library. 
 The output format follows the structure of [Xmlcalabash](http://xmlcalabash.com/) metadata extension.</abstract>
-    <author id="mpatric">Michael Patricios</author>
+    <author id="ijabz">ijabz</author>
     <maintainer id="abunce">Andy Bunce</maintainer>
     <category id="libs">Libraries</category>
-    <home>https://github.com/mpatric/mp3agic</home>
+    <home>https://bitbucket.org/ijabz/jaudiotagger</home>
     <tag>mp3</tag>
     <tag>metadata</tag>
     <tag>audio</tag>
-    <version num="0.0.5">
-      <dependency processor="basex"/>
-      <file name="ex-dotml-0.0.5.xar" role="pkg"/>
+    <version num="0.8.1" generated="2017-04-02T22:32:15.826+01:00">
+      <file name="mp3tag-extractor-0.8.1.xar" role="pkg"/>
     </version>
-    <version num="0.2.0" generated="2015-07-09T20:28:04.629+01:00">
-      <file name="mp3tag-extractor-0.2.0.xar" role="pkg"/>
-    </version>
-    <version num="0.4.0">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.4.1">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.5.0">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.5.1">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.5.2">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.5.3">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.6.0">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.7.0">
-      <!-- generated: {fn:current-dateTime()} -->
-    </version>
-    <version num="0.7.1">
-      <!-- generated: {fn:current-dateTime()} -->
+    <version num="0.8.2" generated="2017-04-03T10:45:58.866+01:00">
+      <file name="mp3tag-extractor-0.8.2.xar" role="pkg"/>
     </version>
   </pkg>
 </repo>

@@ -1,16 +1,20 @@
 # expkg-zone58.metadata.audio
 
-An XQuery library to extract mp3 metadata as XML using the 
+An XQuery library to extract metadata from audio files using the 
 [jaudiotagger](http://www.jthink.net/jaudiotagger/)  
-The output xml format follows the style of the o/p of the [Xmlcalabash](http://xmlcalabash.com/) metadata extension. 
+The output format is XML and follows the style of the o/p of the [Xmlcalabash](http://xmlcalabash.com/) metadata extension. 
 
-Use:
+##Usage
+* audiometa:read($filepath) as element(metadata)
+* audiometa:tags($filepath) as element(tag)*
 
-'''
- tags:read($f)
-'''
+```
+import module namespace audiometa = 'expkg-zone58:audio.metadata';
 
-Result
+audiometa:read($filepath)
+```
+
+Result:
 
 ```
 <metadata src="23 Hedonism (Just Because You Feel Good).mp3">
@@ -49,31 +53,32 @@ I/tag>
   <tag dir="ID3" name="YEAR">1996</tag>
 </metadata>
 ```
+Artwork
+`COVER_ART` tags indicate the presence of art work. 
+``` 
+   audiometa:tags($f)[@name="COVER_ART"]
+<tag dir="ID3" name="COVER_ART">image/jpeg::63772</tag>
 
-BaseX 8.2 or greater is required.
-
-# Usage
-````
-import module namespace mp3 = 'expkg-zone58.metadata.audio';
-mp3:tags("C:\Users\andy\Desktop\v24tagswithalbumimage.mp3")
-````
-
+ let $artmap:=audiometa:artwork($f)
+ return file:write-binary("c:\tmp\art.jpg",$artmap?binaryData)
+```
 
 # Installation
-The library is packaged in the [EXpath](http://expath.org/spec/pkg) xar format with the jaudiotagger jar included. 
-It is targeted at BaseX. It requires at least BaseX 8.2 (because the expkg2012 format is used). 
+The library is packaged in the [EXpath](http://expath.org/spec/pkg) xar format with the jaudiotagger jar
+(jaudiotagger-2.2.6-SNAPSHOT.jar 2016-06-07)  included. It is targeted at BaseX and tested against BaseX version 8.6.2. 
 It can be installed into the BaseX repository by executing:
 ````
-"https://github.com/expkg-zone58/mp3tag-extract/releases/download/v0.5.2/mp3tag-extractor-0.5.2.xar"
+"https://github.com/expkg-zone58/mp3tag-extract/releases/download/v0.8.0/mp3tag-extractor-0.8.0.xar"
 =>repo:install()
 ````
 # Tests
-The `test.xq` script uses the BaseX [Unit module](http://docs.basex.org/wiki/Unit_Module)
+The `test.xqm` script uses the BaseX [Unit module](http://docs.basex.org/wiki/Unit_Module)
 
 # License
 
-Copyright (c) 2016, Andy Bunce. (Apache 2 License). 
+Copyright (c) 2017, Andy Bunce. (Apache 2 License). 
 jaudiotagger ijabz  (LGPL License). 
 
 # History
-Versions before 0.5 used the https://github.com/mpatric/mp3agic library. 
+* Namespace changed for v0.8.
+* Versions before 0.5 used the https://github.com/mpatric/mp3agic library. 

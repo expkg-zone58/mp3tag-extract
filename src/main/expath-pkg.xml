@@ -1,10 +1,10 @@
 <package xmlns="http://expath.org/ns/pkg"
          name="http://expkg-zone58.github.io/mp3tag-extractor"
          abbrev="mp3tag-extractor"
-         version="0.7.1"
+         version="0.8.2"
          spec="1.0">
 
-   <title>Extract audio metadata using https://bitbucket.org/ijabz/jaudiotagger</title>
+   <title>Extract audio metadata using the jaudiotagger library https://bitbucket.org/ijabz/jaudiotagger</title>
    <dependency processor="basex" />
    <xquery> 
      <namespace>expkg-zone58:audio.metadata</namespace>

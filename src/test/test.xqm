@@ -11,8 +11,14 @@ declare variable $test:mp3:=file:resolve-path("v24tagswithalbumimage.mp3",$test:
 (:~ we get tags :)
 declare
   %unit:test
-  function test:success-function() {
+  function test:read() {
   let $meta:=metadata:read($test:mp3)
   return unit:assert($meta/tag)
 };
-  
+(:~ we get art :)
+declare
+  %unit:test
+  function test:artwork() {
+  let $map:=metadata:artwork($test:mp3)
+  return unit:assert($map?binaryData instance of xs:base64Binary)
+};  

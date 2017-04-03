@@ -1,6 +1,6 @@
 <xqdoc:xqdoc xmlns:xqdoc="http://www.xqdoc.org/1.0">
   <xqdoc:control>
-    <xqdoc:date>2017-03-19T12:12:50.33Z</xqdoc:date>
+    <xqdoc:date>2017-04-03T10:45:58.866+01:00</xqdoc:date>
     <xqdoc:version>1.1</xqdoc:version>
   </xqdoc:control>
   <xqdoc:module type="library">
@@ -12,7 +12,7 @@ jaudiotagger supports Mp3, Mp4 (Mp4 audio, M4a and M4p audio) Ogg Vorbis, Flac a
 there is  limited support for Wav and Real formats.</xqdoc:description>
       <xqdoc:see>https://bitbucket.org/ijabz/jaudiotagger</xqdoc:see>
       <xqdoc:author>andy bunce</xqdoc:author>
-      <xqdoc:version>0.7.1</xqdoc:version>
+      <xqdoc:version>0.8.2</xqdoc:version>
       <xqdoc:custom tag="licence">apache 2</xqdoc:custom>
     </xqdoc:comment>
   </xqdoc:module>
@@ -22,6 +22,7 @@ there is  limited support for Wav and Real formats.</xqdoc:description>
     <xqdoc:namespace prefix="FieldKey" uri="java:org.jaudiotagger.tag.FieldKey"/>
     <xqdoc:namespace prefix="Tag" uri="java:org.jaudiotagger.tag.Tag"/>
     <xqdoc:namespace prefix="TagTextField" uri="java:org.jaudiotagger.tag.TagTextField"/>
+    <xqdoc:namespace prefix="StandardArtwork" uri="org.jaudiotagger.tag.images.StandardArtwork"/>
     <xqdoc:namespace prefix="list" uri="java:java.util.List"/>
     <xqdoc:namespace prefix="ann" uri="http://www.w3.org/2012/xquery"/>
   </xqdoc:namespaces>
@@ -58,14 +59,14 @@ there is  limited support for Wav and Real formats.</xqdoc:description>
     </xqdoc:function>
     <xqdoc:function arity="1">
       <xqdoc:comment>
-        <xqdoc:description>Get tag details from audio file as a sequence.</xqdoc:description>
-        <xqdoc:param>$file filepath of audio file</xqdoc:param>
+        <xqdoc:description>Get tag details from audio file as a sequence of <code>tag</code> elements.</xqdoc:description>
+        <xqdoc:param>$file filepath of the audio file to process.</xqdoc:param>
         <xqdoc:return>
           <code>&lt;tag dir=".." name=".."&gt;value&lt;tag....</code>
         </xqdoc:return>
       </xqdoc:comment>
-      <xqdoc:name>audiometa:extract</xqdoc:name>
-      <xqdoc:signature>declare function audiometa:extract($file as xs:string) as element()*</xqdoc:signature>
+      <xqdoc:name>audiometa:tags</xqdoc:name>
+      <xqdoc:signature>declare function audiometa:tags($file as xs:string) as element(tag)*</xqdoc:signature>
       <xqdoc:parameters>
         <xqdoc:parameter>
           <xqdoc:name>file</xqdoc:name>
@@ -73,7 +74,43 @@ there is  limited support for Wav and Real formats.</xqdoc:description>
         </xqdoc:parameter>
       </xqdoc:parameters>
       <xqdoc:return>
-        <xqdoc:type occurrence="*">element()</xqdoc:type>
+        <xqdoc:type occurrence="*">element(tag)</xqdoc:type>
+      </xqdoc:return>
+    </xqdoc:function>
+    <xqdoc:function arity="2">
+      <xqdoc:comment>
+        <xqdoc:description>Get artwork.</xqdoc:description>
+        <xqdoc:param>$file filepath of the audio file to process.</xqdoc:param>
+        <xqdoc:param>$index of artwork to return</xqdoc:param>
+        <xqdoc:return>map containing binaryData as xs:base64Binary, "mimeType" as xs:string</xqdoc:return>
+      </xqdoc:comment>
+      <xqdoc:name>audiometa:artwork</xqdoc:name>
+      <xqdoc:signature>declare function audiometa:artwork($file as xs:string, $index as xs:integer) as map(*)</xqdoc:signature>
+      <xqdoc:parameters>
+        <xqdoc:parameter>
+          <xqdoc:name>file</xqdoc:name>
+          <xqdoc:type>xs:string</xqdoc:type>
+        </xqdoc:parameter>
+        <xqdoc:parameter>
+          <xqdoc:name>index</xqdoc:name>
+          <xqdoc:type>xs:integer</xqdoc:type>
+        </xqdoc:parameter>
+      </xqdoc:parameters>
+      <xqdoc:return>
+        <xqdoc:type>map(*)</xqdoc:type>
+      </xqdoc:return>
+    </xqdoc:function>
+    <xqdoc:function arity="1">
+      <xqdoc:name>audiometa:artwork</xqdoc:name>
+      <xqdoc:signature>declare function audiometa:artwork($file as xs:string) as map(*)</xqdoc:signature>
+      <xqdoc:parameters>
+        <xqdoc:parameter>
+          <xqdoc:name>file</xqdoc:name>
+          <xqdoc:type>xs:string</xqdoc:type>
+        </xqdoc:parameter>
+      </xqdoc:parameters>
+      <xqdoc:return>
+        <xqdoc:type>map(*)</xqdoc:type>
       </xqdoc:return>
     </xqdoc:function>
     <xqdoc:function arity="3">
