@@ -1,4 +1,4 @@
-# expkg-zone58.metadata.audio
+# expkg-zone58:audio.metadata
 
 An XQuery library to extract metadata from audio files using the 
 [jaudiotagger](http://www.jthink.net/jaudiotagger/)  
